@@ -67,3 +67,6 @@ button.quiet{border-color:var(--line);color:var(--ink2)}
 @media (prefers-reduced-motion:no-preference){.result{animation:rise .25s ease-out}@keyframes rise{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}}
 @media print{.mast,.intro,.step,.actions,.foot,.ai{display:none!important}.result{border:1px solid #000}body{background:#fff;color:#000}}
 .result:focus{outline:none}.theme{font-size:14px}
+
+body.focus .intro,body.focus .step,body.focus .fine,body.focus .foot{display:none!important}
+body.focus .result{margin-top:18px}

@@ -1,11 +1,3 @@
-# Devpost submission — Deadline Decoder (LexHack 2026)
-
-**Project name:** Deadline Decoder
-
-**Tagline (short summary):** Got a letter with a deadline? Find out how much time you really have — in plain words, with the math shown.
-
-**Track:** Access to Justice & Civic Tech
-
 ## Inspiration
 This started with a real letter. The builder is a disability claimant; this month Social Security denied his claim a second time. The letter said he had 60 days to ask for a hearing. It did not say that the 60 days start five days after the date printed on the letter, or that a deadline landing on a weekend moves to the next workday. Working that out took an evening of reading federal regulations. Most people who get these letters are sick, stressed, poor, or all three, and a missed deadline is usually permanent. The same trap is in California eviction notices, where "three days" means three *court* days and a holiday weekend can add four more.
 
@@ -39,14 +31,6 @@ The hard part of "access to justice" is often arithmetic nobody explains.
 
 ## What's next
 More letters (EDD, Covered California, housing authority notices), Spanish, a benefits calendar that reminds people when to apply and renew, and a version embedded in techempower.org, a Nevada County nonprofit that publishes plain-language benefits guides.
-
-## Built with
-HTML · CSS · JavaScript (ES modules) · Node.js test runner · Web Speech API · iCalendar (.ics) · Anthropic Claude API (Haiku 4.5, optional, bring-your-own-key) · Google Fonts (Atkinson Hyperlegible, Fraunces) · Azure AI Speech (demo narration) · GitHub Pages
-
-## Links
-- Code: https://github.com/jphein/deadline-decoder
-- Live demo: https://jphein.github.io/deadline-decoder/ (try `#sample`)
-- Video: [JP uploads the mp4 to YouTube (unlisted) or Loom and pastes the link]
 
 ## AI and tool disclosure
 The code was written during LexHack with an AI coding assistant (Claude), directed by the entrant. The optional in-app explanation uses the Anthropic Claude API with the user's own key. Demo narration is synthetic (Azure neural text-to-speech, Dragon HD voice).

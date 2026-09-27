@@ -33,7 +33,7 @@ Tests: `npm test` (Node 20+, no dependencies).
 ## Tech stack
 HTML, CSS, vanilla JavaScript (ES modules), Node's built-in test runner. Fonts: Atkinson Hyperlegible
 (designed for low-vision readers) and Fraunces, from Google Fonts. Web Speech API for read-aloud.
-Optional: Anthropic Messages API (Claude Haiku 4.5) with a user-supplied key. Demo narration: Piper TTS.
+Optional: Anthropic Messages API (Claude Haiku 4.5) with a user-supplied key. Demo narration: Azure AI Speech (Dragon HD voice).
 
 ## Not legal advice
 General information only. Delivery method and personal circumstances can change a deadline; every result

@@ -92,6 +92,7 @@ function show() {
     u.rate = 0.95; speechSynthesis.speak(u);
   };
   history.replaceState(null, "", `#${chosen.id}/${v}`);
+  if (document.body.classList.contains("showsrc")) r.querySelector(".sources").open = true;
   r.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   r.setAttribute("tabindex", "-1"); r.focus({ preventScroll: true });
 }
@@ -141,6 +142,9 @@ function init() {
     const root = document.documentElement, dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
     root.dataset.theme = dark ? "light" : "dark";
   };
+  // "…!" at the end of the hash = focus mode: only the result card (used for the demo video and for sharing)
+  if (location.hash.endsWith("!")) { document.body.classList.add("focus"); history.replaceState(null, "", location.hash.slice(0, -1)); }
+  if (location.hash.endsWith("+src")) { document.body.classList.add("focus", "showsrc"); history.replaceState(null, "", location.hash.slice(0, -4)); }
   if (location.hash === "#sample") { $("#pastebox").open = true; $("#lettertext").value = SAMPLE; guess(); show(); }
   const m = location.hash.match(/^#([a-z0-9-]+)\/(\d{4}-\d{2}-\d{2})$/);
   if (m && RULES.some(r => r.id === m[1])) { choose(m[1]); $("#date").value = m[2]; show(); }
