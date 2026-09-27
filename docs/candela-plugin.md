@@ -37,5 +37,4 @@ test suites read, so the web and Android rules can't drift apart.
 
 - Should it be on by default? Candela turns OCR on by default for discoverability.
 - Should it go in the TechEMPOWER-first home as its own tile, or only as a source?
-- Should it share one rules fixture with the techempower.org notice-decoder page (the website
-  version relayed to techempower-14)?
+- Should it share one rules fixture with the techempower.org notice-decoder page?
