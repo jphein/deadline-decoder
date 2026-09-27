@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deadline Decoder</title>
+<meta name="description" content="Got a letter from Social Security, the county, or a landlord? Find your real deadline, in plain words, with the math shown.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23123a3a'/><rect x='7' y='9' width='18' height='16' rx='2' fill='none' stroke='%23f4efe4' stroke-width='2'/><path d='M7 13h18M12 6v5M20 6v5' stroke='%23f4efe4' stroke-width='2' stroke-linecap='round'/><path d='M12 19l3 3 5-6' fill='none' stroke='%23e8b04a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the tool</a>
+<header class="mast">
+  <div class="wrap mastrow">
+    <p class="brand"><span class="mark" aria-hidden="true">▣</span> Deadline Decoder</p>
+    <button class="theme" type="button" aria-label="Switch light or dark">Light / dark</button>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <section class="intro">
+    <h1>Got a letter with a deadline?<br><span>Find out how much time you really have.</span></h1>
+    <p class="lede">Government and court letters count days in ways that trip people up: mailing days, court days, holidays. Pick your letter, enter one date, and see your deadline with the math shown, what to do, and where to get free help.</p>
+  </section>
+
+  <section class="step" aria-labelledby="s1">
+    <h2 id="s1"><span class="num">1</span> What kind of letter did you get?</h2>
+    <div class="cards" id="cards" role="radiogroup" aria-labelledby="s1"></div>
+    <details class="paste" id="pastebox">
+      <summary>Not sure? Paste the letter's words and we'll guess</summary>
+      <label for="lettertext" class="sr">Letter text</label>
+      <textarea id="lettertext" rows="7" placeholder="Paste or type what the letter says. It stays on your device."></textarea>
+      <div class="row">
+        <button type="button" id="guess" class="primary">Figure it out</button>
+        <button type="button" id="sample" class="quiet">Try a sample letter</button>
+        <span id="guessmsg" class="msg" role="status" aria-live="polite"></span>
+      </div>
+    </details>
+  </section>
+
+  <section class="step" aria-labelledby="s2" id="step2" hidden>
+    <h2 id="s2"><span class="num">2</span> <span id="datelabel">What date is on the letter?</span></h2>
+    <div class="row">
+      <input type="date" id="date" required aria-describedby="datehelp">
+      <button type="button" id="go" class="primary">Show my deadline</button>
+    </div>
+    <p class="help" id="datehelp">Use the date printed on the letter, not the day you opened it — unless the question says otherwise.</p>
+  </section>
+
+  <section id="result" class="result" aria-live="polite" hidden></section>
+
+  <section class="step ai" aria-labelledby="s3" id="aibox" hidden>
+    <h2 id="s3"><span class="num">+</span> Want the whole letter explained in plain words?</h2>
+    <p class="help">Optional. This sends the letter text you pasted to Anthropic's Claude using <b>your own</b> API key, which stays in this browser tab only. Your deadline above never comes from the AI — it comes from the rules, so it can't be made up.</p>
+    <div class="row">
+      <label for="apikey" class="sr">Anthropic API key</label>
+      <input type="password" id="apikey" placeholder="sk-ant-… (optional)" autocomplete="off">
+      <button type="button" id="explain">Explain my letter</button>
+      <span id="aimsg" class="msg" role="status" aria-live="polite"></span>
+    </div>
+    <div id="aiout" class="aiout"></div>
+  </section>
+
+  <p class="fine">Deadline Decoder gives general information, not legal advice. Deadlines can change with how a letter was delivered and with your situation. When in doubt, call free legal aid — the numbers are with every result. Nothing you type leaves your device unless you ask for the optional AI explanation.</p>
+</main>
+<footer class="foot wrap"><span>Built for LexHack 2026 · Access to Justice</span><span id="build"></span></footer>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
