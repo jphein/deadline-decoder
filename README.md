@@ -4,8 +4,8 @@
 
 Government and court letters count days in ways that trip people up: mailing days, court days, holidays.
 Deadline Decoder asks what kind of letter you got and one date, then shows your real deadline in plain
-words, **with the math shown**, what to do next, and where to get free help. It adds the deadline and a
-one-week reminder to your calendar, reads everything aloud, and prints a one-page summary.
+words, **with the math shown**, what to do next, and where to get free help. It adds the deadline to Google Calendar or Outlook in one tap, or downloads an
+iCalendar (.ics) file with a one-week reminder for Apple Calendar and anything else, reads everything aloud, and prints a one-page summary.
 
 Built for **LexHack 2026 — Access to Justice & Civic Tech**.
 

@@ -70,3 +70,6 @@ button.quiet{border-color:var(--line);color:var(--ink2)}
 
 body.focus .intro,body.focus .step,body.focus .fine,body.focus .foot{display:none!important}
 body.focus .result{margin-top:18px}
+
+a.btnlink{display:inline-flex;align-items:center;font:700 16px var(--body);border-radius:10px;padding:10px 14px;min-height:46px;border:2px solid var(--teal);color:var(--teal);background:var(--card);text-decoration:none}
+a.btnlink:hover{background:color-mix(in srgb,var(--teal) 8%,var(--card))}

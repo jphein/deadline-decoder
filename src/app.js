@@ -46,6 +46,18 @@ function ics(rule, res) {
   document.body.appendChild(a); a.click(); a.remove();
 }
 
+// One-tap web calendar links. Only the deadline title and the next step go to the calendar
+// provider (in the link), never the letter text.
+function calLinks(res) {
+  const day = iso(res.deadline).replace(/-/g, "");
+  const next = iso(new Date(res.deadline.getTime() + 86400000)).replace(/-/g, "");
+  const title = `DEADLINE: ${res.headline}`;
+  const details = `${res.steps[0]} Free help: ${res.help.map(h => h.name + " (" + h.how + ")").join("; ")}. From Deadline Decoder — general information, not legal advice.`;
+  const g = "https://calendar.google.com/calendar/render?" + new URLSearchParams({ action: "TEMPLATE", text: title, dates: `${day}/${next}`, details });
+  const o = "https://outlook.live.com/calendar/0/deeplink/compose?" + new URLSearchParams({ path: "/calendar/action/compose", rru: "addevent", subject: title, startdt: iso(res.deadline), enddt: iso(res.deadline), allday: "true", body: details });
+  return { g, o };
+}
+
 function summaryText(rule, res, left) {
   return `${res.headline}: by ${fmt(res.deadline)} (${left >= 0 ? left + " days from today" : "this date has passed"}).\n` +
     res.math.join(" ") + "\nNext: " + res.steps.slice(0, 2).join(" ") +
@@ -74,7 +86,9 @@ function show() {
     <p class="todo">Free help</p>
     <ul class="helpers">${res.help.map(h => `<li><b>${esc(h.name)}</b><span>${esc(h.how)}</span></li>`).join("")}</ul>
     <div class="actions">
-      <button type="button" id="cal">Add to my calendar</button>
+      <button type="button" id="cal">Add to my calendar (.ics)</button>
+      <a class="btnlink" id="gcal" target="_blank" rel="noopener">Add to Google Calendar</a>
+      <a class="btnlink" id="ocal" target="_blank" rel="noopener">Add to Outlook</a>
       <button type="button" id="speak">Read it to me</button>
       <button type="button" id="copy">Copy for a helper</button>
       <button type="button" id="print">Print</button>
@@ -83,6 +97,7 @@ function show() {
   r.hidden = false;
   $("#aibox").hidden = !$("#lettertext").value.trim();
   $("#cal").onclick = () => ics(chosen, res);
+  const links = calLinks(res); $("#gcal").href = links.g; $("#ocal").href = links.o;
   $("#print").onclick = () => window.print();
   $("#copy").onclick = async () => { try { await navigator.clipboard.writeText(summaryText(chosen, res, left)); $("#copy").textContent = "Copied"; } catch { $("#copy").textContent = "Copy failed"; } };
   $("#speak").onclick = () => {
