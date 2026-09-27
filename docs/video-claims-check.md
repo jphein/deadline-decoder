@@ -4,7 +4,7 @@ Narration: `scripts/narration.txt` (Azure Dragon HD, Andrew). Each line below is
 
 | # | Claim in the narration | Source / check | Verdict |
 |---|---|---|---|
-| 02 | The builder's Social Security claim was denied a second time this month. | JP's SSI reconsideration denial, notice dated 2026-09-13 (money/PLAN.md; HA-501 packet). | ✅ |
+| 02 | The builder's Social Security claim was denied a second time this month. | The builder's own SSI reconsideration notice, dated 2026-09-13. | ✅ |
 | 02 | SSA's 60 days start 5 days after the date on the letter. | 20 CFR 416.1433(b) / 404.933(b): 60 days after receipt; 416.1401 / 404.901: receipt presumed 5 days after the notice date. The sample letter's own wording says the same. | ✅ |
 | 02 | A deadline on a weekend moves to the next workday. | 20 CFR 404.3(b), 416.120(d): extended to the next full workday for a Saturday, Sunday, legal holiday or federal non-workday. | ✅ |
 | 03 | Paste the words; it recognizes the letter and finds the date; nothing leaves the device. | `src/rules.js detect()`, `src/dates.js findDates()` (tests pass); the page makes no network request except fonts and the optional AI call the user triggers. | ✅ (fonts load from Google Fonts — no letter data is sent) |

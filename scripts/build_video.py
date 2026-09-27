@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the ≤3-minute demo: Azure Dragon HD narration + app screenshots (Chrome on familiar) → mp4.
 Run on katana; heavy work (Chrome, ffmpeg) happens on familiar over ssh."""
-import subprocess, sys, wave, pathlib, json
+import os, subprocess, sys, wave, pathlib, json
 sys.path.insert(0, str(pathlib.Path.home() / "Projects/speech-to-cli"))
 import json, requests
 CFG = json.load(open(pathlib.Path.home() / ".config/speech-to-cli/config.json"))
@@ -25,7 +25,7 @@ def azure_wav(text):
     i = b.find(b"data"); pcm = b[i + 8:]
     return 24000, 2, 1, pcm
 HERE = pathlib.Path(__file__).parent; OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
-APP = "http://10.0.6.129:7822/index.html"
+APP = os.environ.get("DD_APP_URL", "http://localhost:7822/index.html")
 REMOTE = "/var/tmp/fwork/money/dd-video"
 # scene id -> (url hash, window height, crop top, crop height)
 SCENES = {
