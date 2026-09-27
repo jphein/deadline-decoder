@@ -40,4 +40,4 @@ General information only. Delivery method and personal circumstances can change 
 links to free legal aid.
 
 ## License
-MIT
+AGPL-3.0-or-later © 2026 Jeffrey Pine Hein. See [LICENSE](LICENSE).
